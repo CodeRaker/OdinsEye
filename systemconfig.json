@@ -1,0 +1,8 @@
+# This is the config file for OdinsEye
+
+{
+    "global_settings":{
+        "attempt_heal": false,
+        "check_interval": 1
+    }
+}
