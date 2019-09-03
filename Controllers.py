@@ -5,7 +5,18 @@ import threading
 from Trackers import CMDStdoutTracker
 from Medics import UnixMedic
 from Servers import RESTServer
-from Setting import SystemSettings, TrackerSettings
+from Settings import SystemSettings, TrackerSettings, LogSettings
+
+from Multitask import MProcessPipe
+
+class LogController()
+    def configure_logging(self):
+    self.log = FileRotationLogger(logger_name=self.system_settings["log_system_name"], 
+                                    log_level=self.system_settings["log_level"], 
+                                    file_path=self.system_settings["log_file_path"], 
+                                    file_size_in_mb=self.system_settings["log_file_size_in_mb"], 
+                                    file_count=self.system_settings["log_file_count"]).get()
+    self.log.propagate = False # If True logging is also printed to stdout
 
 class MainController(SystemSettings, TrackerSettings):
 
@@ -34,6 +45,14 @@ class MainController(SystemSettings, TrackerSettings):
         self.cmd_stdout_tracker = CMDStdoutTracker()
         self.unix_medic = UnixMedic()
         self.rest_server = RESTServer()
+
+    #def start_odin_service(self, ):
+
+
+
+    def start_rest_api(self):
+        self.rest_api_process, self.rest_api_pipe = MProcessPipe.spawn(self.rest_server)
+
 
 
     def run_checks(self):

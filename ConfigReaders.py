@@ -14,14 +14,15 @@ class JsonReader:
             with open(system_config, "r") as config_file:
                 data = ""
                 for line in config_file:
-                    if line.lstrip(" ").startswith("#") or line == "\n":
+                    if line.lstrip(" ").startswith("//") or line == "\n":
                         pass
                     else:
                         data += line
 
             data = json.loads(data)
+            system_settings.update(data)
 
-            return system_settings.update(data)
+            return system_settings
 
         except Exception as e:
             raise e
@@ -33,7 +34,7 @@ class JsonReader:
             with open(tracker_config, "r") as config_file:
                 data = ""
                 for line in config_file:
-                    if line.lstrip(" ").startswith("#") or line == "\n":
+                    if line.lstrip(" ").startswith("//") or line == "\n":
                         pass
                     else:
                         data += line

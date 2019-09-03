@@ -1,4 +1,3 @@
-from EyeController import Controller
+from Controllers import MainController
 
 c = Controller()
-c.run_checks()
