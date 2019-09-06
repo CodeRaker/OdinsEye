@@ -24,7 +24,7 @@ class RestSettings:
         self.settings = JsonReader.rest_config()
 
 
-class LogSettings(self):
+class LogSettings():
         self.path = "systemconfig.json"
         self.default_settings = {
                                 "log_file_path": "system.log",

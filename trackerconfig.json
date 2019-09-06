@@ -1,9 +1,9 @@
 "nagios":{
-    "check_health_command":"ls",
+    "check_health_command":"systemctl status nagios",
     "check_health_script":"", 
-    "qualifier_of_success":"lol.json",
+    "qualifier_of_success":"active (running)",
     "attempt_heal":"True",
-    "treatment":"touch lol.json"
+    "treatment":"systemctl restart nagios"
 },
 "mariadb":{
     "check_health_command":"ls",

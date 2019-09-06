@@ -1,8 +1,10 @@
 # For adding SSL: https://stackoverflow.com/questions/8582766/adding-ssl-support-to-socketserver
 
 import SocketServer
+from Settings import 
 
 class RESTServer(SocketServer.BaseRequestHandler):
+
     """
     The RequestHandler class for our server.
 
